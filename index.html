@@ -12,12 +12,30 @@
 
 
     <script>
-        const container = document.querySelector("#container");
+        const container = document.querySelector("#container"); // get the container from the document
+
+        container.style.display = "flex"; // make the container into a flex
+        container.style.flexDirection = "column";
 
 
-        for (let i = 0; i<16; i++){
-            let div = document.createElement("div");
-            container.appendChild(div);
+        for (let i = 0; i<16; i++){  //start a loop to to 16, to create individual divs at each of the lines
+
+                const outdiv = document.createElement("div"); //create an outdiv constant that makes the div holders that will hold the divs for each of the 16 lines
+                
+                outdiv.style.display = "flex"; //make it a flexbox so that they can be side by side, default direction is row
+
+                
+            for (let i = 0; i<16; i++){ //start a new loop to make the horizontal 16 divs for each outdiv
+
+            const indiv = document.createElement("div");  // create an indiv constant that makes the divs that the out div will hold
+            indiv.style.border="1px solid black";
+            indiv.style.width = "20px";
+            indiv.style.height = "20px";
+
+            outdiv.appendChild(indiv); // appened each indiv to the main outdiv of that line
+            
+            }
+            container.appendChild(outdiv);//append each outdiv to the primary div container 
         }
     </script>
 </body>
