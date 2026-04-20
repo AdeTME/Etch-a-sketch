@@ -9,13 +9,13 @@
 
 <div id="container"></div>
 
-
-
     <script>
         const container = document.querySelector("#container"); // get the container from the document
 
         container.style.display = "flex"; // make the container into a flex
         container.style.flexDirection = "column";
+        container.style.justifyContent="center";
+        container.style.alignItems="center";
 
 
         for (let i = 0; i<16; i++){  //start a loop to to 16, to create individual divs at each of the lines
@@ -29,14 +29,22 @@
 
             const indiv = document.createElement("div");  // create an indiv constant that makes the divs that the out div will hold
             indiv.style.border="1px solid black";
-            indiv.style.width = "20px";
-            indiv.style.height = "20px";
+            indiv.style.width = "45px";
+            indiv.style.height = "45px";
 
             outdiv.appendChild(indiv); // appened each indiv to the main outdiv of that line
             
             }
             container.appendChild(outdiv);//append each outdiv to the primary div container 
         }
+
+        const cell = document.querySelectorAll("#container > div > div"); // important, querySelectorAll check every single div applicable, and the constraints use tree logic
+
+        cell.forEach(cell => {
+            cell.addEventListener("mouseenter", ()=>{
+                cell.style.backgroundColor = "black";
+            });
+        });
     </script>
 </body>
 </html>
