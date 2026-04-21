@@ -11,6 +11,7 @@
 
     <script>
         const container = document.querySelector("#container"); // get the container from the document
+        const btn = document.createElement("button");
 
         container.style.display = "flex"; // make the container into a flex
         container.style.flexDirection = "column";
@@ -45,6 +46,18 @@
                 cell.style.backgroundColor = "black";
             });
         });
+
+        btn.textContent = ("Change grid dimensions");
+
+        btn.addEventListener("click", ()=>{
+            let userInput = prompt("grid dimensions"); 
+            if (userInput !== null) {
+            alert( userInput + " by " + userInput + " grid");
+        }
+        });
+
+        document.body.appendChild(btn);
+
     </script>
 </body>
 </html>
