@@ -19,10 +19,13 @@
         container.style.display = "flex"; // make the container into a flex
         container.style.flexDirection = "column";
         container.style.justifyContent="center";
+
         container.style.alignItems="center";
 
+        container.style.height="300px"
+        container.style.width="300px"
 
-        let squareNumber = 16;// declared the number of squares, default is 16 per the exercise
+        let squareNumber = 1;// declared the number of squares, default is 16 per the exercise
 
 
     function pageLoad(squareNumber){
@@ -64,7 +67,13 @@
             pageLoad(squareNumber);
         }});
 
-        
+        document.body.style.display="flex";
+        document.body.style.justifyContent="center";
+        document.body.style.alignItems="center";
+
+
+        container
+
 
         topdiv.appendChild(btn);
         document.body.insertBefore(topdiv,container);
