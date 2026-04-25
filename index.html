@@ -13,19 +13,18 @@
         const container = document.querySelector("#container"); // get the container from the document
         const btn = document.createElement("button");
         const topdiv = document.createElement("div"); 
+
         btn.textContent = ("Change grid dimensions");//added text to the button that is beind displayed at the top
+
         topdiv.style.display="flex";
         topdiv.style.justifyContent="center";
         container.style.display = "flex"; // make the container into a flex
         container.style.flexDirection = "column";
         container.style.justifyContent="center";
+        container.style.height = "600px"
+        container.style.width = "600px"
 
-        container.style.alignItems="center";
-
-        container.style.height="300px"
-        container.style.width="300px"
-
-        let squareNumber = 1;// declared the number of squares, default is 16 per the exercise
+        let squareNumber = 16;// declared the number of squares, default is 16 per the exercise
 
 
     function pageLoad(squareNumber){
@@ -33,21 +32,21 @@
 
                 const outdiv = document.createElement("div"); //create an outdiv constant that makes the div holders that will hold the divs for each of the 16 lines
                 
-                outdiv.style.display = "flex"; //make it a flexbox so that they can be side by side, default direction is row
+                outdiv.style.display = "flex"; //make it a flexbox so that they can be side by side, default direction is row, so they should fit horizontally when flex =1
 
+                outdiv.style.flex = (`${600/squareNumber}px`);
                 
             for (let i = 0; i<squareNumber; i++){ //start a new loop to make the horizontal 16 divs for each outdiv
 
             const indiv = document.createElement("div");  // create an indiv constant that makes the divs that the out div will hold
             indiv.style.border="1px solid black";
-            indiv.style.width = "45px";
-            indiv.style.height = "45px";
-
+            indiv.style.flex = "1";
             outdiv.appendChild(indiv); // appened each indiv to the main outdiv of that line
             
             }
             container.appendChild(outdiv);//append each outdiv to the primary div container 
         }
+
         const cell = document.querySelectorAll("#container > div > div"); // important, querySelectorAll check every single div applicable, and the constraints use tree logic
 
         cell.forEach(cell => {
@@ -57,6 +56,7 @@
         });
     }
 
+
     pageLoad(squareNumber);
 
         btn.addEventListener("click", ()=> {            //listening for an event, click, that does a function when it occurs
@@ -65,14 +65,15 @@
             alert( squareNumber + " by " + squareNumber + " grid");
             container.replaceChildren();
             pageLoad(squareNumber);
+            indiv.style.flex="1";
         }});
 
+        
+
         document.body.style.display="flex";
-        document.body.style.justifyContent="center";
+        document.body.style.flexDirection="column";
+        document.body.style.justifyContent="space-between";
         document.body.style.alignItems="center";
-
-
-        container
 
 
         topdiv.appendChild(btn);
